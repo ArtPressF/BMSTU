@@ -64,7 +64,7 @@ return 5;
 const string mode(argv[1]); // Режим работы (запись или чтение)
 const string open_mode(argv[2]); // Режим открытия файла (текстовый или двоичный)
 const string file_name(argv[3]); // Имя файла
-int n; // Переменная, задающая число элементов массива
+int n = 0; // Переменная, задающая число элементов массива
 vector<COMPUTER> Computers; // Массив структур
 if (mode == "write") { // Запись в файл
 // Ввод данных с клавиатуры
@@ -128,9 +128,22 @@ if (!fint) // Ошибка файл не открыт
 cout << endl << "Error, file not found" << endl;
 return 1;
 }
+fint.seekg(0, ios::end); // Переходим в конец файла, чтобы узнать его размер
+long size = (long)fint.tellg(); // Размер файла в байтах
+fint.seekg(0); // Возвращаемся в начало файла
 fint >> n; // Читаем n в текстовом режиме
+if (!fint || n < 0 || n > size) // Не число, отрицательное или больше размера файла
+{
+cout << endl << "Error, wrong file format" << endl;
+return 1;
+}
 Computers.resize(n); // Задаем размер массива
 for (auto & pos : Computers) read_text(fint, pos);
+if (!fint) // Данные в файле закончились раньше времени
+{
+cout << endl << "Error, wrong file format" << endl;
+return 1;
+}
 fint.close(); // Закрываем файл
 }
 else
@@ -142,9 +155,22 @@ if (!finb) // Ошибка файл не открыт
 cout << endl << "Error, file not found" << endl;
 return 1;
 }
+finb.seekg(0, ios::end); // Переходим в конец файла, чтобы узнать его размер
+long size = (long)finb.tellg(); // Размер файла в байтах
+finb.seekg(0); // Возвращаемся в начало файла
 finb.read((char *)&n, sizeof(n)); // Читаем n в двоичном режиме
+if (!finb || n < 0 || n > size) // Не прочиталось, отрицательное или больше размера файла
+{
+cout << endl << "Error, wrong file format" << endl;
+return 1;
+}
 Computers.resize(n); // Задаем размер массива
 for (auto & pos : Computers) read_binary(finb, pos);
+if (!finb) // Данные в файле закончились раньше времени
+{
+cout << endl << "Error, wrong file format" << endl;
+return 1;
+}
 finb.close(); // Закрываем файл
 }
 else {
