@@ -1,0 +1,17 @@
+Read from file: 7 cars
+
+set (sorted by model name), 6 cars:
+Audi A4, fuel 5.8/8.9/6.9 l/100km, max speed 240 km/h, power 150 hp
+BMW X5, fuel 7.5/12.1/9.3 l/100km, max speed 250 km/h, power 249 hp
+Kia Rio, fuel 5.4/8.2/6.5 l/100km, max speed 190 km/h, power 123 hp
+Lada Vesta, fuel 6.1/8.7/7.2 l/100km, max speed 180 km/h, power 106 hp
+Skoda Octavia, fuel 5.6/8.5/6.7 l/100km, max speed 215 km/h, power 150 hp
+Toyota Camry, fuel 6.2/9.5/7.4 l/100km, max speed 210 km/h, power 181 hp
+
+unordered_set (order is not defined), 6 cars:
+Audi A4, fuel 5.8/8.9/6.9 l/100km, max speed 240 km/h, power 150 hp
+Toyota Camry, fuel 6.2/9.5/7.4 l/100km, max speed 210 km/h, power 181 hp
+BMW X5, fuel 7.5/12.1/9.3 l/100km, max speed 250 km/h, power 249 hp
+Skoda Octavia, fuel 5.6/8.5/6.7 l/100km, max speed 215 km/h, power 150 hp
+Lada Vesta, fuel 6.1/8.7/7.2 l/100km, max speed 180 km/h, power 106 hp
+Kia Rio, fuel 5.4/8.2/6.5 l/100km, max speed 190 km/h, power 123 hp
